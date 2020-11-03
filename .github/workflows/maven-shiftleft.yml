@@ -3,9 +3,9 @@ name: ShiftLeft and Java WebGoat
 
 on:
   push:
-    branches: [ Yossi's-first ]
+    branches: [ develop ]
   pull_request:
-    branches: [ Yossi's-first ]
+    branches: [ develop ]
 
 jobs:
   build:
