@@ -32,18 +32,9 @@ jobs:
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
       run: |
-        export HOME=$GITHUB_WORKSPACE
-        export TMPDIR=$HOME
-        curl -O https://cdn.shiftleft.io/download/sl ; chmod a+x ./sl
-        export branch_name=$( echo $GITHUB_REF | cut -d'/' -f3 )
-        echo
-        echo "The current directory is " $PWD
-        echo
-        echo "Base directory contents:"
-        ls
-        echo
-        echo "Server directory contents: "
-        ls webgoat-server
-        echo
-        echo "Server target directory contents:"
-        ls webgoat-server/target
+           export HOME=$GITHUB_WORKSPACE
+           export TMPDIR=$HOME
+           curl -O https://cdn.shiftleft.io/download/sl ; chmod a+x ./sl
+           export branch_name=$( echo $GITHUB_REF | cut -d'/' -f3 )
+           ./sl analyze --wait --java --app WebGoat --tag branch=$branch_name ./webgoat-server/target/webgoat-server-v8.1.0.jar
+   
